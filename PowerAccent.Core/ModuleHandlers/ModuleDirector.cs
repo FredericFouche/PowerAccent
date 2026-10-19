@@ -14,6 +14,7 @@ internal class ModuleDirector
         _moduleHandler = new PauseModuleHandler(powerAccent, settingsService, options);
         _moduleHandler
             .SetNext(new CheckGameModeModuleHandler(powerAccent, settingsService, options))
+            .SetNext(new StrokeNumberModuleHandler(powerAccent, settingsService, options))
             .SetNext(new StrokeLetterModuleHandler(powerAccent, settingsService, options))
             .SetNext(new StrokeArrowsModuleHandler(powerAccent, settingsService, options))
             .SetNext(new StrokeSpaceModuleHandler(powerAccent, settingsService, options))

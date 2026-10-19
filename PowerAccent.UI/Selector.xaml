@@ -9,11 +9,25 @@
     <Window.Resources>
         
         <DataTemplate x:Key="DefaultKeyTemplate">
-            <TextBlock VerticalAlignment="Center" FontSize="18" Foreground="{DynamicResource PrimaryForegroundBrush}" Text="{Binding}" TextAlignment="Center" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock VerticalAlignment="Center" FontSize="18" Foreground="{DynamicResource PrimaryForegroundBrush}" Text="{Binding Character}" TextAlignment="Center" />
+                <TextBlock Grid.Row="1" Margin="0,1,0,0" FontSize="10" Opacity="0.65" Foreground="{DynamicResource PrimaryForegroundBrush}" Text="{Binding Shortcut}" TextAlignment="Center" />
+            </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="SelectedKeyTemplate">
-            <TextBlock VerticalAlignment="Center" FontSize="18" Foreground="White" Text="{Binding}" TextAlignment="Center" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock VerticalAlignment="Center" FontSize="18" Foreground="White" Text="{Binding Character}" TextAlignment="Center" />
+                <TextBlock Grid.Row="1" Margin="0,1,0,0" FontSize="10" Opacity="0.8" Foreground="White" Text="{Binding Shortcut}" TextAlignment="Center" />
+            </Grid>
         </DataTemplate>
         
         <Style TargetType="ListBox">
@@ -32,7 +46,7 @@
                     <ControlTemplate TargetType="{x:Type ListBoxItem}">
                         <Grid
                             Width="48"
-                            Height="48"
+                            Height="60"
                             Margin="0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
@@ -46,7 +60,7 @@
                                 RadiusX="4"
                                 RadiusY="4"
                                 Visibility="Collapsed" />
-                            <ContentPresenter Margin="12" />
+                            <ContentPresenter Margin="12,8" />
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="true">

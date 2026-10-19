@@ -9,7 +9,9 @@ public partial class Selector : Window
         InitializeComponent();
         this.ShowActivated = false;
         this.Topmost = true;
-        characters.ItemsSource = selectedCharacters;
+        characters.ItemsSource = selectedCharacters.Select((character, index) => new AccentChoice(
+            character,
+            index < 9 ? (index + 1).ToString() : index == 9 ? "0" : string.Empty));
         characters.SelectedIndex = 0;
     }
 
@@ -33,4 +35,6 @@ public partial class Selector : Window
             _ => HorizontalAlignment.Center,
         };
     }
+
+    private sealed record AccentChoice(char Character, string Shortcut);
 }
